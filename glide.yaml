@@ -1,0 +1,14 @@
+package: github.com/mrcaelumn/crudwebsocket
+import:
+- package: github.com/goadesign/goa
+  version: v1.4.1
+  subpackages:
+  - cors
+  - design
+  - design/apidsl
+  - goatest
+  - middleware
+- package: github.com/tylerb/graceful
+  version: v1.2.15
+- package: github.com/urfave/cli
+  version: v1.20.0

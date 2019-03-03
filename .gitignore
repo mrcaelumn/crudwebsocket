@@ -1,0 +1,12 @@
+/.vscode
+/.history
+/.idea
+/*.iml
+/*.json
+/*.log
+
+/build
+/crudwebsocket*
+/.vagrant
+/Vagrantfile
+build
