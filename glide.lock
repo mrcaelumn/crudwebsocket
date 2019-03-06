@@ -1,5 +1,5 @@
-hash: 541c19ec7f834681cc4f2caa3b32621166e1a06dea8f7927ffd1756b3b5fc896
-updated: 2019-03-03T18:43:16.426669+07:00
+hash: 25061a054985915c0b53bd74cbbc3ae036b4847398f281d2c7ace4deb7f11c01
+updated: 2019-03-03T21:43:52.462628+07:00
 imports:
 - name: github.com/armon/go-metrics
   version: f0300d1749da6fa982027e449ec0c7a145510c3c
@@ -22,6 +22,8 @@ imports:
   - uuid
 - name: github.com/gofrs/uuid
   version: 6b08a5c5172ba18946672b49749cde22873dd7c2
+- name: github.com/gorilla/websocket
+  version: 66b9c49e59c6c48f0ffce28c2d8b8a5678502c6d
 - name: github.com/hashicorp/go-immutable-radix
   version: 27df80928bb34bb1b0d6d0e01b9e679902e7a6b5
 - name: github.com/hashicorp/golang-lru
@@ -47,7 +49,7 @@ imports:
   subpackages:
   - websocket
 - name: golang.org/x/sys
-  version: b6889370fb1098ed892bd3400d189bb6a3355813
+  version: d455e41777fca6e8a5a79e34a14b8368bc11d9ba
   subpackages:
   - unix
 testImports: []

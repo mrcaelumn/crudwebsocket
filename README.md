@@ -7,3 +7,4 @@
  - Goa Design
  - Glide.sh
  - Websocket
+ - Angular.js

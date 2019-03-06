@@ -12,3 +12,5 @@ import:
   version: v1.2.15
 - package: github.com/urfave/cli
   version: v1.20.0
+- package: github.com/gorilla/websocket
+  version: v1.4.0
