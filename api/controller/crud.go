@@ -76,7 +76,7 @@ func (c *CrudController) Delete(ctx *app.DeleteCrudContext) error {
 	}
 
 	data := global.DATAS[strings.ToLower(strings.TrimSpace(ctx.ID))]
-	updated := make([]map[string]string, len(data))
+	var updated []map[string]string
 	for _, val := range data {
 		_, ok := val[strings.ToLower(strings.TrimSpace(objmap["idchat"]))]
 		if !ok {
