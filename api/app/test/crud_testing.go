@@ -440,7 +440,7 @@ func CreateCrudUnauthorized(t goatest.TInterface, ctx context.Context, service *
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudBadRequest(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) (http.ResponseWriter, *app.CrudwebsocketError) {
+func DeleteCrudBadRequest(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) (http.ResponseWriter, *app.CrudwebsocketError) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -461,7 +461,7 @@ func DeleteCrudBadRequest(t goatest.TInterface, ctx context.Context, service *go
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -469,6 +469,7 @@ func DeleteCrudBadRequest(t goatest.TInterface, ctx context.Context, service *go
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -514,7 +515,7 @@ func DeleteCrudBadRequest(t goatest.TInterface, ctx context.Context, service *go
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudForbidden(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) (http.ResponseWriter, *app.CrudwebsocketError) {
+func DeleteCrudForbidden(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) (http.ResponseWriter, *app.CrudwebsocketError) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -535,7 +536,7 @@ func DeleteCrudForbidden(t goatest.TInterface, ctx context.Context, service *goa
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -543,6 +544,7 @@ func DeleteCrudForbidden(t goatest.TInterface, ctx context.Context, service *goa
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -588,7 +590,7 @@ func DeleteCrudForbidden(t goatest.TInterface, ctx context.Context, service *goa
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudInternalServerError(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) (http.ResponseWriter, *app.CrudwebsocketError) {
+func DeleteCrudInternalServerError(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) (http.ResponseWriter, *app.CrudwebsocketError) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -609,7 +611,7 @@ func DeleteCrudInternalServerError(t goatest.TInterface, ctx context.Context, se
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -617,6 +619,7 @@ func DeleteCrudInternalServerError(t goatest.TInterface, ctx context.Context, se
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -662,7 +665,7 @@ func DeleteCrudInternalServerError(t goatest.TInterface, ctx context.Context, se
 // It returns the response writer so it's possible to inspect the response headers.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudNoContent(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) http.ResponseWriter {
+func DeleteCrudNoContent(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) http.ResponseWriter {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -682,7 +685,7 @@ func DeleteCrudNoContent(t goatest.TInterface, ctx context.Context, service *goa
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -690,6 +693,7 @@ func DeleteCrudNoContent(t goatest.TInterface, ctx context.Context, service *goa
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -723,7 +727,7 @@ func DeleteCrudNoContent(t goatest.TInterface, ctx context.Context, service *goa
 // It returns the response writer so it's possible to inspect the response headers.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) http.ResponseWriter {
+func DeleteCrudOK(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) http.ResponseWriter {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -743,7 +747,7 @@ func DeleteCrudOK(t goatest.TInterface, ctx context.Context, service *goa.Servic
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -751,6 +755,7 @@ func DeleteCrudOK(t goatest.TInterface, ctx context.Context, service *goa.Servic
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}
@@ -784,7 +789,7 @@ func DeleteCrudOK(t goatest.TInterface, ctx context.Context, service *goa.Servic
 // It returns the response writer so it's possible to inspect the response headers and the media type struct written to the response.
 // If ctx is nil then context.Background() is used.
 // If service is nil then a default service is created.
-func DeleteCrudUnauthorized(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string) (http.ResponseWriter, *app.CrudwebsocketError) {
+func DeleteCrudUnauthorized(t goatest.TInterface, ctx context.Context, service *goa.Service, ctrl app.CrudController, id string, idchat string) (http.ResponseWriter, *app.CrudwebsocketError) {
 	// Setup service
 	var (
 		logBuf bytes.Buffer
@@ -805,7 +810,7 @@ func DeleteCrudUnauthorized(t goatest.TInterface, ctx context.Context, service *
 	// Setup request context
 	rw := httptest.NewRecorder()
 	u := &url.URL{
-		Path: fmt.Sprintf("/crudws/delete/%v", id),
+		Path: fmt.Sprintf("/crudws/delete/%v/%v", id, idchat),
 	}
 	req, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -813,6 +818,7 @@ func DeleteCrudUnauthorized(t goatest.TInterface, ctx context.Context, service *
 	}
 	prms := url.Values{}
 	prms["id"] = []string{fmt.Sprintf("%v", id)}
+	prms["idchat"] = []string{fmt.Sprintf("%v", idchat)}
 	if ctx == nil {
 		ctx = context.Background()
 	}

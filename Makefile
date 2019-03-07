@@ -2,7 +2,7 @@ CRUDWEBSOCKET_PKG_VERSION?=0.0.0
 COMMIT=`git rev-parse --short HEAD`
 
 build: 
-	go install -v --ldflags "-w \
+	go build -v --ldflags "-w \
 	-X github.com/mrcaelumn/crudwebsocket/version.Version/version.Version=$(CRUDWEBSOCKET_PKG_VERSION) \
 	-X github.com/mrcaelumn/crudwebsocket/version.Version/version.GitCommit=$(COMMIT)" .
 

@@ -88,7 +88,8 @@ type DeleteCrudContext struct {
 	context.Context
 	*goa.ResponseData
 	*goa.RequestData
-	ID string
+	ID     string
+	Idchat string
 }
 
 // NewDeleteCrudContext parses the incoming request URL and body, performs validations and creates the
@@ -104,6 +105,11 @@ func NewDeleteCrudContext(ctx context.Context, r *http.Request, service *goa.Ser
 	if len(paramID) > 0 {
 		rawID := paramID[0]
 		rctx.ID = rawID
+	}
+	paramIdchat := req.Params["idchat"]
+	if len(paramIdchat) > 0 {
+		rawIdchat := paramIdchat[0]
+		rctx.Idchat = rawIdchat
 	}
 	return &rctx, err
 }

@@ -51,9 +51,12 @@ var _ = Resource("crud", func() {
 		Metadata("swagger:summary", "Get data")
 	})
 	Action("delete", func() {
-		Routing(GET("/delete/:id"))
+		Routing(GET("/delete/:id/:idchat"))
 		Params(func() {
-			Param("id", String, "id of items", func() {
+			Param("id", String, "id of users", func() {
+				Example("146380193.16379966.1494326266")
+			})
+			Param("idchat", String, "idchat of chats", func() {
 				Example("146380193.16379966.1494326266")
 			})
 		})

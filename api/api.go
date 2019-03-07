@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/goadesign/goa"
+	"github.com/goadesign/goa/logging/log15"
 	"github.com/goadesign/goa/middleware"
 	"github.com/inconshreveable/log15"
 	"github.com/mrcaelumn/crudwebsocket/api/app"
@@ -23,9 +24,10 @@ func Run(ctx context.Context, listener net.Listener, log log15.Logger) error {
 
 	// Mount middleware
 	service.Use(middleware.RequestID())
-	service.Use(middleware.LogRequest(true))
+	// service.Use(middleware.LogRequest(true))
 	service.Use(middleware.ErrorHandler(service, true))
 	service.Use(middleware.Recover())
+	service.WithLogger(goalog15.New(log))
 
 	// Mount "crud" controller
 	c1 := controller.NewCrudController(service)

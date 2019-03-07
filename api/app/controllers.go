@@ -69,8 +69,8 @@ func MountCrudController(service *goa.Service, ctrl CrudController) {
 		}
 		return ctrl.Delete(rctx)
 	}
-	service.Mux.Handle("GET", "/crudws/delete/:id", ctrl.MuxHandler("delete", h, nil))
-	service.LogInfo("mount", "ctrl", "Crud", "action", "Delete", "route", "GET /crudws/delete/:id")
+	service.Mux.Handle("GET", "/crudws/delete/:id/:idchat", ctrl.MuxHandler("delete", h, nil))
+	service.LogInfo("mount", "ctrl", "Crud", "action", "Delete", "route", "GET /crudws/delete/:id/:idchat")
 
 	h = func(ctx context.Context, rw http.ResponseWriter, req *http.Request) error {
 		// Check if there was an error loading the request

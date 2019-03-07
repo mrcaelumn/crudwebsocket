@@ -121,13 +121,18 @@ paths:
       summary: Get data
       tags:
       - crud
-  /crudws/delete/{id}:
+  /crudws/delete/{id}/{idchat}:
     get:
       operationId: crud#delete
       parameters:
-      - description: id of items
+      - description: id of users
         in: path
         name: id
+        required: true
+        type: string
+      - description: idchat of chats
+        in: path
+        name: idchat
         required: true
         type: string
       produces:

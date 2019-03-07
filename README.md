@@ -6,5 +6,4 @@
  - Golang 1.8
  - Goa Design
  - Glide.sh
- - Websocket
  - Angular.js
