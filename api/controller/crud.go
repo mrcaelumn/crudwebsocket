@@ -57,35 +57,24 @@ func (c *CrudController) Delete(ctx *app.DeleteCrudContext) error {
 	// CrudController_Delete: start_implement
 
 	// Put your logic here
-	var objmap map[string]string
-	decoder := json.NewDecoder(ctx.Body)
-	defer ctx.Body.Close()
-	err := decoder.Decode(&objmap)
 	if ctx.ID == "" {
 		return ctx.BadRequest(&app.CrudwebsocketError{Msg: "ID not found", Code: "003"})
 	}
-	if err != nil {
-		log15.Error(err.Error())
-		return ctx.BadRequest(&app.CrudwebsocketError{Msg: "failed to parse json", Code: "002"})
-	}
-	if objmap["idchat"] == "" {
+	if ctx.Idchat == "" {
 		return ctx.BadRequest(&app.CrudwebsocketError{Msg: "ID CHAT not found", Code: "003"})
-	}
-	if objmap["text"] == "" {
-		return ctx.BadRequest(&app.CrudwebsocketError{Msg: "text not found", Code: "004"})
 	}
 
 	data := global.DATAS[strings.ToLower(strings.TrimSpace(ctx.ID))]
 	var updated []map[string]string
 	for _, val := range data {
-		_, ok := val[strings.ToLower(strings.TrimSpace(objmap["idchat"]))]
+		_, ok := val[strings.ToLower(strings.TrimSpace(ctx.Idchat))]
 		if !ok {
 			updated = append(updated, val)
 		}
 	}
 	global.DATAS[strings.ToLower(strings.TrimSpace(ctx.ID))] = updated
 
-	return ctx.OK([]byte(`{ "status" : "` + objmap["idchat"] + ` deleted" }`))
+	return ctx.OK([]byte(`{ "status" : "` + ctx.Idchat + ` deleted" }`))
 	// CrudController_Delete: end_implement
 }
 
@@ -178,14 +167,4 @@ func (c *CrudController) Update(ctx *app.UpdateCrudContext) error {
 	global.DATAS[strings.ToLower(strings.TrimSpace(ctx.ID))] = updated
 	return ctx.OK([]byte(`{ "status" : "` + objmap["idchat"] + ` updated" }`))
 	// CrudController_Update: end_implement
-}
-
-func delete_empty(s []message) []message {
-	var r []message
-	for _, str := range s {
-		if str.Text != "" {
-			r = append(r, str)
-		}
-	}
-	return r
 }
